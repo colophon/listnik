@@ -1,5 +1,5 @@
 import todos, {initialState} from './todos'
-import {addTodo, toggleTodo, saveTodo} from '../actions'
+import {addTodo, toggleTodo, saveTodo, clearCompletedTodos} from '../actions'
 
 describe('todos reducer', () => {
   it('initializes to initialState', () => {
@@ -18,5 +18,17 @@ describe('todos reducer', () => {
   it('handles updating a todo title', () => {
     const st = todos(initialState, saveTodo(0, 'foo'))
     expect(st[0].title).toEqual('foo')
+  })
+  describe('handles clearing completed todos', () => {
+    it('clears completed todos', () => {
+      const st = todos(initialState, toggleTodo(0))
+      expect(todos(st,clearCompletedTodos()).length).toEqual(0)
+    })
+    it("it doesn't clear active todos", () => {
+      expect(todos(initialState, clearCompletedTodos()).length).toEqual(1)
+    })
+  })
+  it('handles clearing completed todos', () => {
+
   })
 })

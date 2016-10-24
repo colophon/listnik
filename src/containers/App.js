@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import {Layout, Header, Content, Grid, Cell} from 'react-mdl'
 
 import AddTodo from '../components/TodoTextInput'
-import TodoList from '../components/TodoList'
-import VisibleTodosFilter from '../components/VisibleTodosFilter'
+import MainBody from '../components/MainBody'
 
 import * as TodoActions from '../actions'
 
@@ -22,16 +21,15 @@ class App extends Component {
               <AddTodo onSave={this.props.actions.addTodo} placeholder='What do you want to get done?'/>
             </Cell>
             <Cell col={8} shadow={2} style={{padding: '1em'}}>
-              <VisibleTodosFilter
-                value={this.props.filter}
-                handler={this.props.actions.filterTodos}/>
-              <TodoList
-                editing={this.props.editing}
+              <MainBody
                 filter={this.props.filter}
+                editing={this.props.editing}
                 todos={this.props.todos}
-                onEditTodo={this.props.actions.editTodo}
-                onToggleTodo={this.props.actions.toggleTodo}
-                onSave={this.props.actions.saveTodo}
+                handleChangeFilter={this.props.actions.filterTodos}
+                handleClearTodos={this.props.actions.clearCompletedTodos}
+                handleEditTodo={this.props.actions.editTodo}
+                handleToggleTodo={this.props.actions.toggleTodo}
+                handleSaveTodo={this.props.actions.saveTodo}
                 />
             </Cell>
           </Grid>

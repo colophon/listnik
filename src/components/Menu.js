@@ -5,7 +5,7 @@ import { Button, Menu as M, MenuItem, Icon } from 'react-mdl'
 const Menu = ({items, handler, value}) => {
   const selectedItem = items.find((v) => (v.key === value))
   return (
-    <div>
+    <span>
       <Button id="filter-menu-button">
         SHOW
         {' '}
@@ -21,7 +21,7 @@ const Menu = ({items, handler, value}) => {
           </MenuItem>
         )}
       </M>
-    </div>
+    </span>
   )
 }
 

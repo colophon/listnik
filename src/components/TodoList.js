@@ -11,7 +11,7 @@ const showTodo = {
   [TODO_FILTERS.COMPLETE]: (v) => v.completed,
 }
 
-const TodoList = ({todos, filter, editing, onEditTodo, onToggleTodo, onSave}) => {
+const TodoList = ({todos, filter, editing, handleEditTodo, handleToggleTodo, handleSaveTodo}) => {
   const visibleTodos = todos.filter(showTodo[filter])
   return (
       <List>
@@ -19,16 +19,16 @@ const TodoList = ({todos, filter, editing, onEditTodo, onToggleTodo, onSave}) =>
           if (editing !== todo.id) {
             return (<Todo key={todo.id}
                       todo={todo}
-                      onDoubleClick={onEditTodo}
-                      onCheck={onToggleTodo}
+                      onDoubleClick={handleEditTodo}
+                      onCheck={handleToggleTodo}
                     />)
           } else {
             return (<TodoTextInput key={todo.id}
                       placeholder='Edit todo'
                       text={todo.title}
                       onSave={(title) => {
-                        onSave(todo.id, title)
-                        onEditTodo(null)
+                        handleSaveTodo(todo.id, title)
+                        handleEditTodo(null)
                       }}/>)
           }
         })}

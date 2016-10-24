@@ -1,4 +1,4 @@
-import { ADD_TODO, SAVE_TODO, TOGGLE_TODO } from '../actions/constants'
+import { ADD_TODO, SAVE_TODO, TOGGLE_TODO, CLEAR_COMPLETED_TODOS } from '../actions/constants'
 
 export const initialState = [
   {
@@ -31,6 +31,8 @@ export default function todos(state = initialState, action) {
           { ...todo, completed: !todo.completed} :
           todo
       )
+    case CLEAR_COMPLETED_TODOS:
+      return state.filter(todo => !todo.completed)
     default:
       return state
   }

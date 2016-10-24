@@ -15,3 +15,5 @@ export const saveTodo = (id, title) => ({type: types.SAVE_TODO, payload: {id, ti
 export const toggleTodo = id => ({type: types.TOGGLE_TODO, payload: {id}})
 
 export const filterTodos = filter => ({type: types.FILTER_TODOS, payload: {filter}})
+
+export const clearCompletedTodos = () => ({type: types.CLEAR_COMPLETED_TODOS})
